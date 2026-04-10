@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arcady Levitanus | Enterprise Infrastructure Architect</title>
+  <meta name="description" content="Arcady Levitanus is a Senior Infrastructure Architect with 20+ years of experience across enterprise identity, hybrid cloud, virtualization, storage, and disaster recovery." />
+  <style>
+    :root {
+      --bg: #08111d;
+      --bg-soft: #0d1727;
+      --panel: #101c2f;
+      --panel-2: #13223a;
+      --border: rgba(255,255,255,0.08);
+      --text: #edf3fb;
+      --muted: #a5b5cb;
+      --accent: #84c1ff;
+      --accent-2: #8fe7ff;
+      --shadow: 0 20px 48px rgba(0,0,0,0.28);
+      --radius: 22px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(132,193,255,0.12), transparent 25%),
+        radial-gradient(circle at 85% 10%, rgba(143,231,255,0.08), transparent 20%),
+        linear-gradient(180deg, var(--bg) 0%, #060d17 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(8, 17, 29, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.96rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 46px 0 24px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.028));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .hero-copy {
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: -120px;
+      top: -120px;
+      background: radial-gradient(circle, rgba(132,193,255,0.14), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 4.4vw, 4.7rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      max-width: 820px;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 820px;
+    }
+
+    .hero-text {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      max-width: 860px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-weight: 700;
+      transition: transform .18s ease, opacity .18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08111d;
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d8e8ff;
+      font-size: 0.9rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      min-width: 0;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .portrait {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .portrait-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      min-height: 560px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0b1422;
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      object-position: center 24%;
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(7,13,22,0.72), rgba(7,13,22,0.9));
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .portrait-overlay h2 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+    }
+
+    .portrait-overlay p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .grid-3, .grid-2 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .panel {
+      padding: 24px;
+      min-width: 0;
+    }
+
+    .panel h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      line-height: 1.3;
+    }
+
+    .panel p, .timeline-item p, .edu p, .contact-item, .feature p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #dce8ff;
+      font-size: 0.91rem;
+      line-height: 1.3;
+    }
+
+    .feature-list, .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature, .timeline-item, .edu, .contact-box {
+      padding: 24px;
+      min-width: 0;
+    }
+
+    .feature h3, .timeline-item h3, .edu h3 {
+      margin: 0 0 10px;
+      line-height: 1.3;
+      font-size: 1.12rem;
+    }
+
+    .timeline-item ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .timeline-item li { margin-top: 6px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .contact-item strong { color: var(--text); }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    h1, h2, h3, p, li, span, strong, a {
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-wrap,
+      .grid-3,
+      .grid-2,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-frame,
+      .portrait-frame img {
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-copy, .portrait, .panel, .feature, .timeline-item, .edu, .contact-box { padding: 20px; }
+      .stats { grid-template-columns: 1fr; }
+      .portrait-frame,
+      .portrait-frame img {
+        min-height: 400px;
+      }
+      .portrait-frame img {
+        object-position: center 18%;
+      }
+      h1 { font-size: 2.2rem; }
+      .btn { width: 100%; }
+      .cta-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Arcady Levitanus</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-wrap">
+      <div class="card hero-copy">
+        <div class="eyebrow">Enterprise Infrastructure • Identity • Cloud • Recovery</div>
+        <h1>Quiet authority in complex enterprise infrastructure.</h1>
+        <p class="lead">Arcady Levitanus is a Senior Infrastructure Architect with more than 20 years of experience across enterprise identity, hybrid cloud, virtualization, storage, disaster recovery, and high-trust technical execution. His background combines architectural judgment, real engineering depth, and the ability to stabilize environments that have become too complex, too fragile, or too noisy to scale well.</p>
+
+        <div class="hero-text">
+          <div>His work spans Active Directory architecture and remediation, hybrid identity and authentication modernization, VMware and data center infrastructure, Azure and AWS-connected operating models, enterprise storage platforms, backup and resilience strategy, and customer-facing technical leadership across discovery, solution design, and escalation handling.</div>
+          <div>The consistent pattern is not just breadth. It is the ability to bring structure to difficult environments, reduce operational friction, clarify dependencies, and leave systems more resilient, more supportable, and easier to evolve over time.</div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:arcady12@gmail.com">Email Arcady</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/alevitanus/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Florida, USA</span>
+          <span class="tag">20+ Years</span>
+          <span class="tag">Enterprise Infrastructure</span>
+          <span class="tag">Identity & Cloud</span>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Hybrid Identity</strong>
+            <span>Active Directory, Entra ID, federation, SSO, and modernization of fragile authentication models.</span>
+          </div>
+          <div class="stat">
+            <strong>Data Center & Cloud</strong>
+            <span>VMware, Hyper-V, Azure, AWS, storage, networking, and platform architecture.</span>
+          </div>
+          <div class="stat">
+            <strong>Recovery & Resilience</strong>
+            <span>Backup strategy, disaster recovery, operational readiness, and recovery-aware design.</span>
+          </div>
+          <div class="stat">
+            <strong>Technical Leadership</strong>
+            <span>Discovery, architecture guidance, workshops, escalations, and decision-ready technical communication.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card portrait">
+        <div class="portrait-frame">
+          <img src="Head.jpg" alt="Arcady Levitanus portrait" />
+          <div class="portrait-overlay">
+            <h2>Arcady Levitanus</h2>
+            <p>Senior infrastructure architect focused on identity, modernization, resilience, and enterprise platforms that need to perform under real operational pressure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Positioning</div>
+            <h2 class="section-title">About</h2>
+          </div>
+          <p class="section-subtitle">A senior infrastructure profile built around enterprise delivery, technical depth, disciplined execution, and long-term operational sanity.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card panel">
+            <h3>Architectural judgment</h3>
+            <p>Strong at making infrastructure decisions across identity, virtualization, cloud, storage, and recovery where technical mistakes create long-tail operational and business risk.</p>
+          </div>
+          <div class="card panel">
+            <h3>Hands-on credibility</h3>
+            <p>Deep practical experience in Active Directory remediation, hybrid identity, VMware, Windows infrastructure, PowerShell automation, storage platforms, backup strategy, and platform troubleshooting.</p>
+          </div>
+          <div class="card panel">
+            <h3>Calm under complexity</h3>
+            <p>Repeatedly brought into environments that need structure, stabilization, clearer ownership, better sequencing, and cleaner operating models that real teams can support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Core Capability</div>
+            <h2 class="section-title">Areas of Expertise</h2>
+          </div>
+          <p class="section-subtitle">Enterprise identity, M&A integration, virtualization, cloud-connected infrastructure, disaster recovery, storage, and customer-facing technical execution.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card panel">
+            <h3>Identity, Access & Directory Services</h3>
+            <p>Enterprise Active Directory architecture, remediation, multi-forest and multi-domain design, Group Policy modernization, federation, SAML, OAuth, OIDC, Entra ID integration, Azure AD Connect, Conditional Access, MFA, and modernization away from brittle legacy authentication patterns.</p>
+          </div>
+          <div class="card panel">
+            <h3>Infrastructure, Cloud & Platform Design</h3>
+            <p>VMware vSphere, ESXi, vCenter, VMware Cloud Foundation, Hyper-V, Windows Server platforms, Azure and AWS integration, enterprise storage and SAN design, hybrid cloud architecture, backup strategy, recovery planning, and high-availability operational thinking.</p>
+          </div>
+        </div>
+
+        <div class="chips">
+          <span class="chip">Active Directory Architecture</span>
+          <span class="chip">Hybrid Identity & Entra ID</span>
+          <span class="chip">M&A Infrastructure Discovery</span>
+          <span class="chip">SSO / Federation / Modern Auth</span>
+          <span class="chip">Windows Server</span>
+          <span class="chip">VMware vSphere / VCF</span>
+          <span class="chip">Hyper-V</span>
+          <span class="chip">Azure & AWS</span>
+          <span class="chip">Storage & SAN Platforms</span>
+          <span class="chip">Disaster Recovery</span>
+          <span class="chip">Backup Architecture</span>
+          <span class="chip">PowerShell Automation</span>
+          <span class="chip">Infrastructure Governance</span>
+          <span class="chip">Technical Workshops</span>
+          <span class="chip">Escalation Leadership</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Distinctive Value</div>
+            <h2 class="section-title">What stands out</h2>
+          </div>
+          <p class="section-subtitle">The differentiator is the combination of technical range, delivery discipline, and the ability to turn messy environments into workable systems.</p>
+        </div>
+
+        <div class="feature-list">
+          <div class="card feature">
+            <h3>He translates technical complexity into practical infrastructure decisions.</h3>
+            <p>Whether the issue is identity sprawl, fragile virtualization platforms, inherited cloud access models, legacy authentication, or weak recovery readiness, his work focuses on decomposing complexity and turning it into something engineering teams can actually execute and support.</p>
+          </div>
+          <div class="card feature">
+            <h3>He works comfortably at the boundary between deep engineering and stakeholder confidence.</h3>
+            <p>This includes technical discovery, architecture overviews, migration sequencing, trade-off analysis, escalation handling, and helping decision-makers understand what matters without hiding behind jargon or hand-waving.</p>
+          </div>
+          <div class="card feature">
+            <h3>He leaves environments quieter and more durable than he found them.</h3>
+            <p>That pattern shows up across identity modernization, storage and virtualization design, cloud integration, recovery planning, and infrastructure assessments aimed at long-term operational sanity rather than short-term patchwork.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Experience</div>
+            <h2 class="section-title">Selected Experience Themes</h2>
+          </div>
+          <p class="section-subtitle">Focused on the work itself: architecture, modernization, integration, resilience, and high-trust technical execution.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="card timeline-item">
+            <h3>M&A infrastructure discovery, integration planning, and enterprise onboarding</h3>
+            <p>Led technical discovery and integration planning for acquired environments entering enterprise standards across identity, cloud access, application authentication, and infrastructure governance. Assessed cloud footprints, access models, role structures, authentication patterns, and operational dependencies; then defined practical onboarding paths that reduce delivery risk and improve consistency.</p>
+            <ul>
+              <li>Assessed acquired environments across Azure, AWS, identity systems, authentication methods, and infrastructure dependencies.</li>
+              <li>Designed repeatable onboarding and governance patterns that accelerate integration while minimizing disruption.</li>
+              <li>Built PowerShell and Microsoft Graph tooling to analyze access models, enterprise application assignments, and nested group dependencies.</li>
+              <li>Translated technical findings into decision-ready guidance for engineering leadership and business stakeholders.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-item">
+            <h3>Enterprise identity, Active Directory, and authentication modernization</h3>
+            <p>Designed, remediated, and stabilized complex Active Directory and hybrid identity environments, including multi-forest and multi-domain scenarios, directory cleanup, replication troubleshooting, Group Policy redesign, hybrid identity strategy, federation, SSO, and modernization of brittle legacy authentication flows.</p>
+            <ul>
+              <li>Strong background in AD architecture, hybrid identity, Azure AD Connect, Entra integration, SAML, OAuth, OIDC, and MFA strategy.</li>
+              <li>Led troubleshooting involving replication failures, topology issues, sync problems, and fragile authentication patterns.</li>
+              <li>Supported migration, consolidation, and modernization work where access continuity and operational trust were critical.</li>
+              <li>Improved resilience and maintainability by simplifying older designs and clarifying ownership boundaries.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-item">
+            <h3>Virtualization, data center architecture, and cloud-connected infrastructure</h3>
+            <p>Architected and supported enterprise VMware and Hyper-V environments across data center modernization, platform refresh, capacity planning, storage integration, and hybrid cloud alignment. This includes VMware lifecycle work, VMware Cloud Foundation exposure, SAN-attached virtualization environments, infrastructure readiness validation, and dependable operational design.</p>
+            <ul>
+              <li>Designed virtualization platforms using VMware vSphere, ESXi, vCenter, HA, DRS, and storage-integrated compute clusters.</li>
+              <li>Worked across hybrid cloud patterns involving Microsoft Azure, AWS, identity-aware access, and platform connectivity.</li>
+              <li>Supported large-scale modernization programs spanning servers, networking, storage, and operational governance.</li>
+              <li>Produced architecture documentation, readiness assessments, operational runbooks, and deployment guidance.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-item">
+            <h3>Backup, disaster recovery, and operational resilience</h3>
+            <p>Designed and improved backup and disaster recovery posture for enterprise environments where recovery confidence matters as much as daily uptime. Experience includes recovery sequencing, identity-aware considerations, platform dependency mapping, recovery testing, runbooks, and resilience design across storage, virtualization, and core infrastructure services.</p>
+            <ul>
+              <li>Worked with enterprise backup and recovery platforms including Veeam, Rubrik, and related recovery frameworks.</li>
+              <li>Aligned infrastructure design with recovery objectives, dependency awareness, and business continuity expectations.</li>
+              <li>Reduced operational risk by turning loosely documented recovery assumptions into clearer, testable procedures.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-item">
+            <h3>Customer-facing architecture, workshops, and escalation leadership</h3>
+            <p>Served repeatedly as a senior customer-facing technical presence: guiding workshops, reviewing architecture options, framing trade-offs, supporting proof-of-concept work, clarifying deployment readiness, and acting as a trusted escalation point when projects or environments become unstable.</p>
+            <ul>
+              <li>Presented architecture strategies, migration plans, risks, and technical trade-offs to both technical teams and leadership stakeholders.</li>
+              <li>Led workshops and discovery sessions that translated business needs into concrete infrastructure direction.</li>
+              <li>Served as an escalation resource for complex issues spanning identity, virtualization, cloud integration, storage, and platform stability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Academic Foundation</div>
+            <h2 class="section-title">Education</h2>
+          </div>
+          <p class="section-subtitle">A strong academic foundation behind a long enterprise infrastructure career.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card edu">
+            <h3>Master of Science</h3>
+            <p>Computer and Information Sciences</p>
+          </div>
+          <div class="card edu">
+            <h3>Bachelor of Science</h3>
+            <p>Business and Industry Administration</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Credentials</div>
+            <h2 class="section-title">Certifications</h2>
+          </div>
+          <p class="section-subtitle">Recognized credentials across cloud, Microsoft infrastructure, virtualization, and recovery-oriented platforms.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card edu">
+            <h3>Current & Recognized Certifications</h3>
+            <p>AWS Certified Solutions Architect, Microsoft Certified Systems Engineer, VMware Certified Professional, and Veeam Technical Sales Professional, with additional Azure infrastructure certifications represented in progress across selected resume variants.</p>
+          </div>
+          <div class="card edu">
+            <h3>Professional Positioning</h3>
+            <p>These credentials support a profile built around enterprise infrastructure judgment rather than narrow tool ownership: cloud architecture, Microsoft platforms, VMware environments, and recovery-driven systems thinking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Direct Contact</div>
+            <h2 class="section-title">Connect</h2>
+          </div>
+          <p class="section-subtitle">For infrastructure architecture, identity modernization, enterprise platform strategy, technical discovery, or senior engineering consulting.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card contact-box">
+            <h3 style="margin-top:0;">Contact</h3>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="mailto:arcady12@gmail.com">Send Email</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/alevitanus/" target="_blank" rel="noopener">View LinkedIn</a>
+            </div>
+            <div class="contact-list">
+              <div class="contact-item"><strong>Email:</strong> arcady12@gmail.com</div>
+              <div class="contact-item"><strong>Location:</strong> Florida, USA</div>
+              <div class="contact-item"><strong>LinkedIn:</strong> linkedin.com/in/alevitanus</div>
+            </div>
+          </div>
+
+          <div class="card contact-box">
+            <h3 style="margin-top:0;">Profile Snapshot</h3>
+            <div class="contact-list">
+              <div class="contact-item"><strong>Primary Lens:</strong> enterprise infrastructure, identity, and architecture</div>
+              <div class="contact-item"><strong>Working Style:</strong> structured, analytical, low-drama, high-accountability</div>
+              <div class="contact-item"><strong>Strength:</strong> turning technical complexity into durable operating models</div>
+              <div class="contact-item"><strong>Ideal Fit:</strong> senior infrastructure, architecture, hybrid identity, modernization, and resilience-driven roles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Arcady Levitanus. Enterprise Infrastructure Architect.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
